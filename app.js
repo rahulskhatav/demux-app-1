@@ -9,7 +9,6 @@ app.set("view engine", "ejs")
 
 //Routing
 app.get('/', (req, res) =>{
-    // res.send("Home Page")
     res.render("home")
 })
 
