@@ -1,0 +1,69 @@
+<%- include("../partials/header.ejs")%>
+<style>
+    .jumbotron{
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin-bottom: 0px;
+    }
+    .jumboHeader{
+        margin-bottom: 30px;
+    }
+    .alert{
+        margin-bottom: 0;
+    }
+</style>
+<%if(specSheet.Rated != "N.A"){%>
+    <div class="alert alert-warning" role="alert">
+        <h4 class="alert-heading" style="display: inline-block">Warning!</h4>
+            This movie is Rated <%=specSheet.Rated%>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+      </div>
+<%}%>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <img src = "<%=specSheet.Poster%>" alt = "Poster" height = "250px" width = "150px">
+            </div>
+            <div class="col">
+                <h1 class="display-4 jumboHeader">
+                    <strong>
+                        <%=specSheet.Title%>
+                    </strong>
+                  </h1>
+                <p class="lead">
+                    <strong>Year:</strong> <%=specSheet.Year%><br>
+                    <strong>Genre:</strong> <%=specSheet.Genre%><br>
+                    <strong>Actors:</strong> <%=specSheet.Actors%><br>
+                    <strong>Director:</strong> <%=specSheet.Director%>
+                  </p>
+            </div>
+        </div>  
+    </div>
+</div>
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Plot</h5>
+            <%=specSheet.Plot%>
+        </div>
+        </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Ratings</h5>
+            <%specSheet['Ratings'].forEach((rating)=>{%>
+                <strong><%=rating.Source%></strong> : <%=rating.Value%><br>
+            <%})%>
+            <strong>IMDb Rating:</strong> <%=specSheet.imdbRating%><br>
+            <strong>IMDb Votes:</strong> <%=specSheet.imdbVotes%>
+        </div>
+    </div>
+</div>
+
+
+
+<%- include("../partials/footer.ejs")%>
